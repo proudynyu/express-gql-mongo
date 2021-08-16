@@ -1,4 +1,4 @@
-import { User } from '../../database/implementations/entities/User'
+import { User } from '../../database/entities/User'
 import { IUserRepository } from '../../database/repositories/IUserRepository'
 import { CreateUserDTO } from './DTO'
 

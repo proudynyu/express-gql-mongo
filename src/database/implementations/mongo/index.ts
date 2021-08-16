@@ -1,6 +1,6 @@
 import { CreateUserDTO } from '../../../services/createUsers/DTO'
 import { IUserRepository } from '../../repositories/IUserRepository'
-import { User } from '../entities/User'
+import { User } from '../../entities/User'
 import mongoose from 'mongoose'
 
 export class MongoRepository implements IUserRepository {
