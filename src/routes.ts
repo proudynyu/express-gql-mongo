@@ -7,7 +7,9 @@ router.get('/', (req: Request, res: Response) => {
   return res.status(200).json({ msg: 'Functional' })
 })
 
-router.get('/api/users', createUserController.handle)
+router.get('/api/users', (req: Request, res: Response) =>
+  createUserController.handle(req, res)
+)
 
 // router.get('/api/users/:id')
 

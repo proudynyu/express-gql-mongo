@@ -3,7 +3,7 @@ import { validateEmail, validateName, validateUsername } from '../../utils'
 import { CreateUserDTO } from './DTO'
 import { CreateUserCase } from './execute'
 
-function validateData(data: CreateUserDTO) {
+async function validateData(data: CreateUserDTO) {
   const { email, name, username } = data
 
   const isValidEmail = validateEmail(email)
@@ -23,12 +23,11 @@ export class CreateUserController {
     try {
       const data = req.body
 
-      validateData(data)
+      await validateData(data)
 
-      console.log({ data, createUser: this.createUser })
-      // const response = await this.createUser.execute(data)
+      const response = await this.createUser.execute(data)
 
-      return res.status(200).json(data)
+      return res.status(200).json(response)
     } catch (err) {
       return res.status(400).json({ error: err.message })
     }

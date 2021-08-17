@@ -6,6 +6,7 @@ export class CreateUserCase {
   constructor(private userRepository: IUserRepository) {}
 
   async execute(userData: CreateUserDTO) {
+    console.log({ userRepository: this.userRepository })
     // const userAlreadyExists = await this.userRepository.findByEmail(
     //   userData.email
     // )
