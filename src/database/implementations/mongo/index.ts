@@ -8,12 +8,16 @@ export class MongoRepository implements IUserRepository {
 
   async findByEmail(email: string): Promise<User> {
     const hasUser = this.connection.findOne({ email })
+    console.log(hasUser)
     return {} as User
   }
 
-  async save(user: User): Promise<void> {}
+  async save(user: User): Promise<void> {
+    console.log({ user })
+  }
 
   async checkUserData(data: CreateUserDTO): Promise<User> {
+    console.log({ data })
     return {} as User
   }
 }

@@ -1,4 +1,7 @@
 import mongoose from 'mongoose'
+import { config } from 'dotenv'
+
+config()
 
 export default new Promise((resolve, reject) => {
   const uri = process.env.MONGOURI || ''
