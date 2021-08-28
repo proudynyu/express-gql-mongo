@@ -1,5 +1,5 @@
 import { User } from '../../database/entities/User'
-import { IUserRepository } from '../../database/repositories/IUserRepository'
+import { IUserRepository } from '@database/repositories/IUserRepository'
 import { CreateUserDTO } from './DTO'
 import bcrypt from 'bcrypt'
 import { config } from 'dotenv'

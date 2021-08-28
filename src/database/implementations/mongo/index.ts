@@ -1,6 +1,6 @@
-import { CreateUserDTO } from '../../../services/createUsers/DTO'
-import { IUserRepository } from '../../repositories/IUserRepository'
-import { User } from '../../entities/User'
+import { CreateUserDTO } from '@services/createUsers/DTO'
+import { IUserRepository } from '@database/repositories/IUserRepository'
+import { User } from '@database/entities/User'
 import UserModel from './models/UserSchema'
 
 export class MongoRepository implements IUserRepository {
@@ -30,5 +30,9 @@ export class MongoRepository implements IUserRepository {
   async checkUserData(data: CreateUserDTO): Promise<User> {
     console.log({ data })
     return {} as User
+  }
+
+  async getUsers(): Promise<User[]> {
+    return [{} as User]
   }
 }

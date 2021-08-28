@@ -1,0 +1,1 @@
+import { GetUsersController } from './controller'

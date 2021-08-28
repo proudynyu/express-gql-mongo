@@ -4,7 +4,7 @@ import {
   validateName,
   validateUsername,
   validatePassword,
-} from '../../utils'
+} from '@utils/index'
 import { CreateUserDTO } from './DTO'
 import { CreateUserCase } from './execute'
 
