@@ -30,4 +30,8 @@ export class MockedUserRepo implements IUserRepository {
 
     mockedDatabase.push(user)
   }
+
+  async getUsers(): Promise<User[]> {
+    return [{} as User]
+  }
 }
