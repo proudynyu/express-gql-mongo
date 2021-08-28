@@ -27,11 +27,6 @@ export class MongoRepository implements IUserRepository {
     await this.connection.create(user)
   }
 
-  async checkUserData(data: CreateUserDTO): Promise<User> {
-    console.log({ data })
-    return {} as User
-  }
-
   async getUsers(): Promise<User[]> {
     return [{} as User]
   }
