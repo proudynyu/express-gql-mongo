@@ -2,6 +2,9 @@ import { Router, Request, Response } from 'express'
 import createUserController from '@services/createUsers'
 import getUsersController from '@services/getUsers'
 
+import { graphqlHTTP } from 'express-graphql'
+import { schema } from './graphql'
+
 const router = Router()
 
 router.get('/', (req: Request, res: Response) => {
@@ -20,6 +23,12 @@ router.get('/api/users/:id', (req: Request, res: Response) => {
   getUsersController.getUser(req, res)
 })
 
-// router.get('/api/users/:id')
+router.use(
+  '/graphql',
+  graphqlHTTP({
+    schema,
+    graphiql: true,
+  })
+)
 
 export default router

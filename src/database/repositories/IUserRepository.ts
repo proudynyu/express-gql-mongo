@@ -1,4 +1,3 @@
-import { CreateUserDTO } from '../../services/createUsers/DTO'
 import { User } from '../entities/User'
 
 export interface IUserRepository {

@@ -9,6 +9,8 @@
     "rootDir": "./",
     "outDir": "dist",
     "baseUrl": ".",
+    // "noUnusedLocals": true,
+    // "noUnusedParameters": true,
     "paths": {
       "@database/*": ["./src/database/*"],
       "@services/*": ["./src/services/*"],
