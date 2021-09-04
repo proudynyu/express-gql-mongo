@@ -9,7 +9,7 @@ config()
 export class CreateUserCase {
   constructor(private userRepository: IUserRepository) {}
 
-  async execute(userData: CreateUserDTO) {
+  async execute(userData: CreateUserDTO): Promise<User> {
     const hashJump = Number(process.env.SECRET)
     const hashPassword = await bcrypt.hash(userData.password, hashJump)
 
@@ -20,5 +20,7 @@ export class CreateUserCase {
     const user = new User({ ...userData, password: hashPassword })
 
     await this.userRepository.save(user)
+
+    return user
   }
 }

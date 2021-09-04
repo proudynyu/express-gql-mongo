@@ -11,13 +11,17 @@ router.get('/', (req: Request, res: Response) => {
   return res.status(200).json({ msg: 'Functional' })
 })
 
-router.post('/api/users', (req: Request, res: Response) =>
-  createUserController.handle(req, res)
-)
-
-router.get('/api/users', (req: Request, res: Response) => {
-  getUsersController.getUsers()
+router.post('/api/users', async (req: Request, res: Response) => {
+  const data = req.body
+  try {
+    const user = await createUserController.handle(data)
+    return res.status(200).json({ msg: 'User created with success!', user })
+  } catch (err) {
+    return res.status(400).json({ error: err.message })
+  }
 })
+
+router.get('/api/users', () => getUsersController.getUsers())
 
 router.get('/api/users/:id', (req: Request, res: Response) => {
   getUsersController.getUser(req, res)

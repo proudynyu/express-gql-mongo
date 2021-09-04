@@ -1,15 +1,17 @@
+import { CreateUserDTO } from '@services/createUsers/DTO'
 import getUsersController from '@services/getUsers'
-// import createUserController from '@services/createUsers'
+import createUserController from '@services/createUsers'
 
 export const queries = {
   getUsers: async () => {
-    const users = getUsersController.getUsers()
+    const users = await getUsersController.getUsers()
     return users
   },
 }
 
 export const mutations = {
-  createUsers: async () => {
-    // const user = createUserController.handle()
+  createUser: async (_, {input}) => {
+    const user = await createUserController.handle(input)
+    return user
   }
 }

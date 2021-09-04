@@ -7,8 +7,9 @@ import {
 } from '@utils/index'
 import { CreateUserDTO } from './DTO'
 import { CreateUserCase } from './execute'
+import { User } from '@database/entities/User'
 
-async function validateData(data: CreateUserDTO) {
+function validateData(data: CreateUserDTO) {
   const { email, name, username, password } = data
 
   const isValidEmail = validateEmail(email)
@@ -27,17 +28,11 @@ async function validateData(data: CreateUserDTO) {
 export class CreateUserController {
   constructor(private createUser: CreateUserCase) {}
 
-  async handle(req: Request, res: Response): Promise<Response> {
-    try {
-      const data = req.body
+  async handle(data: CreateUserDTO): Promise<User> {
+    validateData(data)
 
-      await validateData(data)
+    const user = await this.createUser.execute(data)
 
-      await this.createUser.execute(data)
-
-      return res.status(200).json({ msg: 'User created with success!' })
-    } catch (err) {
-      return res.status(400).json({ error: err.message })
-    }
+    return user
   }
 }
